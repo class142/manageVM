@@ -6,8 +6,8 @@ error_reporting(E_ALL);
 require("mysql_config.php");
 
 $hostid = 1;
-if (isset($_GET["hostid"])) { $_GET["hostid"]; }
-if (isset($_POST["hostid"])) { $_POST["hostid"]; }
+if (isset($_GET["hostid"])) { $hostid = $_GET["hostid"]; }
+if (isset($_POST["hostid"])) { $hostid = $_POST["hostid"]; }
 
 $conn = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD) or die(mysqli_error()); 
 mysqli_set_charset($conn, 'utf8');
@@ -50,7 +50,7 @@ while($i = mysqli_fetch_object($i_res)){
     </style>
   </head>
   <body>
-    <h1>Virtuelle Maschinen auf <?php echo $host->description; ?></h1>
+    <!-- <h1>Virtuelle Maschinen auf <?php echo $host->description; ?></h1> -->
     <table>
     <thead>
       <th>Name</th>
