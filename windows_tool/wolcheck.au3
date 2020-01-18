@@ -2,12 +2,12 @@
 #AutoIt3Wrapper_Icon=C:\Icons\s.ico
 #AutoIt3Wrapper_Outfile=wolcheck.exe
 #EndRegion ;**** Directives created by AutoIt3Wrapper_GUI ****
-#include "D:\pydio\autoit\Include\mysql_lib.au3"
+#include "mysql_lib.au3"
 #include <Array.au3>
 
 While 1
    $sql = _MySQLConnect("root","kMCLmqiYiSOS6sE6I4pJ","wolcheck","10.0.0.4", "{MySQL ODBC 3.51 Driver}", 3307)
-   $var = _Query($sql,"SELECT * FROM vm WHERE state != newState")
+   $var = _Query($sql,"SELECT * FROM wolcheck.vm AS vm JOIN wolcheck.vm_data AS vd ON vm.name=vd.name WHERE state != newState AND vd.host = 1")
    Dim $vms[0][2]
    With $var
    While NOT .EOF
